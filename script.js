@@ -10,7 +10,7 @@ const downloadBtn = document.getElementById("downloadBtn");
 // اسم التطبيق
 // ========================================
 
-document.title = "NEXUS PLAN — تحميل";
+document.title = "NEXUSPLAN — تحميل";
 
 
 // ========================================
@@ -72,7 +72,7 @@ if (downloadBtn) {
     downloadBtn.href = APK_URL;
 
     // اسم الملف عند التحميل
-    downloadBtn.download = "NEXUS-PLAN.apk";
+    downloadBtn.download = "NEXUSPLAN.apk";
 
 }
 

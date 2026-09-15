@@ -64,7 +64,7 @@ function updateThemeIcon(isDark) {
 // مهم:
 // يجب أن يكون NEXUS-PLAN.apk بجانب index.html
 
-const APK_URL = "NEXUS-PLAN.apk";
+const APK_URL = "NEXUSPLAN.apk";
 
 if (downloadBtn) {
 

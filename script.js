@@ -12,6 +12,6 @@ toggle.addEventListener("click", () => {
 
 // اربط هنا رابط الـAPK لاحقًا:
 // document.getElementById("downloadB
-document.getElementById("downloadBtn").href = "Nexusplan.apk";
+document.getElementById("downloadBtn").href = "NEXUS PLAN.apk";
   
 });

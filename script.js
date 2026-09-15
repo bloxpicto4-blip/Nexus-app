@@ -11,10 +11,7 @@ toggle.addEventListener("click", () => {
 });
 
 // اربط هنا رابط الـAPK لاحقًا:
-// document.getElementById("downloadBtn").href = "app.apk";
-document.getElementById("downloadBtn").addEventListener("click", (e) => {
-  if (e.currentTarget.getAttribute("href") === "#") {
-    e.preventDefault();
-    alert("أضف رابط ملف APK داخل script.js عندما يكون الملف جاهزًا.");
+// document.getElementById("downloadB
+document.getElementById("downloadBtn").href = "app.apk";
   }
 });

@@ -6,15 +6,16 @@
 const themeToggle = document.getElementById("themeToggle");
 const downloadBtn = document.getElementById("downloadBtn");
 
+
 // ========================================
 // اسم التطبيق
 // ========================================
 
-document.title = "NEXUSPLAN — تحميل";
+document.title = "NEXUS PLAN — تحميل";
 
 
 // ========================================
-// Dark Mode
+// الوضع الداكن / الفاتح
 // ========================================
 
 const savedTheme = localStorage.getItem("nexus-theme");
@@ -27,7 +28,7 @@ if (savedTheme === "dark") {
 }
 
 if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
+    themeToggle.addEventListener("click", function () {
 
         document.body.classList.toggle("dark");
 
@@ -58,33 +59,33 @@ function updateThemeIcon(isDark) {
 
 
 // ========================================
-// تحميل ملف APK
+// رابط تحميل APK
 // ========================================
 
-// مهم:
-// يجب أن يكون NEXUS-PLAN.apk بجانب iindex const APK_URL = "NEXUS-PLAN.apk";
+// اسم الملف الحقيقي الموجود في GitHub
+const APK_URL = "NEXUS%20PLAN.apk";
 
 if (downloadBtn) {
-    downloadBtn.href = APK_URL;
-}
-    // رابط ملف APK
+
     downloadBtn.href = APK_URL;
 
-    // اسم الملف عند التحميل
-    downloadBtn.download = "NEXUSPLAN.apk";
+    downloadBtn.setAttribute(
+        "download",
+        "NEXUS PLAN.apk"
+    );
 
 }
 
 
 // ========================================
-// التحقق من زر التحميل
+// زر التحميل
 // ========================================
 
 if (downloadBtn) {
 
     downloadBtn.addEventListener("click", function () {
 
-        console.log("Downloading NEXUS PLAN APK...");
+        console.log("NEXUS PLAN APK download started.");
 
     });
 
@@ -95,13 +96,12 @@ if (downloadBtn) {
 // Smooth Scroll
 // ========================================
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
+document.querySelectorAll('a[href^="#"]').forEach(function (link) {
 
     link.addEventListener("click", function (event) {
 
         const href = this.getAttribute("href");
 
-        // تجاهل الرابط الفارغ
         if (!href || href === "#") {
             return;
         }
@@ -125,9 +125,9 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
 
 // ========================================
-// تشغيل الموقع
+// رسالة في Console
 // ========================================
 
 console.log("NEXUS PLAN loaded successfully.");
 console.log("Developed by Abdelrhman.");
-console.log("APK: " + APK_URL);
+console.log("APK file: NEXUS PLAN.apk");

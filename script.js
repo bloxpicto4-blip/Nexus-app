@@ -6,15 +6,16 @@
 const themeToggle = document.getElementById("themeToggle");
 const downloadBtn = document.getElementById("downloadBtn");
 
-// -------------------------------
+// ========================================
 // اسم التطبيق
-// -------------------------------
+// ========================================
+
 document.title = "NEXUS PLAN — تحميل";
 
 
-// -------------------------------
+// ========================================
 // Dark Mode
-// -------------------------------
+// ========================================
 
 const savedTheme = localStorage.getItem("nexus-theme");
 
@@ -25,77 +26,98 @@ if (savedTheme === "dark") {
     updateThemeIcon(false);
 }
 
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
 
-    const isDark = document.body.classList.contains("dark");
+        document.body.classList.toggle("dark");
 
-    localStorage.setItem(
-        "nexus-theme",
-        isDark ? "dark" : "light"
-    );
+        const isDark = document.body.classList.contains("dark");
 
-    updateThemeIcon(isDark);
-});
+        localStorage.setItem(
+            "nexus-theme",
+            isDark ? "dark" : "light"
+        );
+
+        updateThemeIcon(isDark);
+    });
+}
 
 function updateThemeIcon(isDark) {
+
+    if (!themeToggle) return;
+
     themeToggle.textContent = isDark ? "☀" : "☾";
+
     themeToggle.setAttribute(
         "aria-label",
-        isDark ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن"
+        isDark
+            ? "تفعيل الوضع الفاتح"
+            : "تفعيل الوضع الداكن"
     );
 }
 
 
-// -------------------------------
-// رابط تحميل APK
-// -------------------------------
+// ========================================
+// تحميل ملف APK
+// ========================================
 
-// لو ملف APK موجود بجانب index.html
+// مهم:
+// يجب أن يكون NEXUS-PLAN.apk بجانب index.html
+
 const APK_URL = "NEXUS-PLAN.apk";
 
-downloadBtn.setAttribute("href", APK_URL);
-downloadBtn.setAttribute("download", "");
+if (downloadBtn) {
+
+    // رابط ملف APK
+    downloadBtn.href = APK_URL;
+
+    // اسم الملف عند التحميل
+    downloadBtn.download = "NEXUS-PLAN.apk";
+
+}
 
 
-// -------------------------------
-// رسالة احتياطية عند عدم وجود الرابط
-// -------------------------------
+// ========================================
+// التحقق من زر التحميل
+// ========================================
 
-downloadBtn.addEventListener("click", (event) => {
+if (downloadBtn) {
 
-    const href = downloadBtn.getAttribute("href");
+    downloadBtn.addEventListener("click", function () {
 
-    if (!href || href === "#") {
-        event.preventDefault();
+        console.log("Downloading NEXUS PLAN APK...");
 
-        alert(
-            "ملف NEXUS PLAN APK غير مرتبط حاليًا."
-        );
-    }
+    });
 
-});
+}
 
 
-// -------------------------------
+// ========================================
 // Smooth Scroll
-// -------------------------------
+// ========================================
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
     link.addEventListener("click", function (event) {
 
-        const target = document.querySelector(
-            this.getAttribute("href")
-        );
+        const href = this.getAttribute("href");
+
+        // تجاهل الرابط الفارغ
+        if (!href || href === "#") {
+            return;
+        }
+
+        const target = document.querySelector(href);
 
         if (target) {
+
             event.preventDefault();
 
             target.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
+
         }
 
     });
@@ -103,9 +125,10 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 });
 
 
-// -------------------------------
-// Console
-// -------------------------------
+// ========================================
+// تشغيل الموقع
+// ========================================
 
 console.log("NEXUS PLAN loaded successfully.");
 console.log("Developed by Abdelrhman.");
+console.log("APK: " + APK_URL);
